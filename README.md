@@ -1,135 +1,471 @@
+# HireLens AI — AI-Powered Resume Analyzer
+
 <div align="center">
-  <br />
-    <a href="https://www.youtube.com/watch?v=iYOz165wGkQ" target="_blank">
-      <img src="public/readme/hero.webp" alt="Project Banner">
-    </a>
-  <br />
 
-  <div>
-    <img alt="Static Badge" src="https://img.shields.io/badge/React-4c84f3?style=for-the-badge&logo=react&logoColor=white">
-        <img src="https://img.shields.io/badge/-Tailwind-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-        <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="TypeScript" />
-    <img alt="Static Badge" src="https://img.shields.io/badge/Puter.js-181758?style=for-the-badge&logoColor=white">
-  </div>
+### Analyze. Improve. Apply with Confidence.
 
-  <h3 align="center">AI Resume Analyzer</h3>
+**HireLens AI** is an AI-powered resume analysis web application that evaluates resumes against job requirements and provides structured feedback, ATS compatibility insights, and actionable improvement suggestions.
 
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/watch?v=XUkNR-JfHwo" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
+Built with **React, TypeScript, Tailwind CSS, React Router, Puter.js, and AI-powered analysis**.
+
 </div>
 
-## 📋 <a name="table">Table of Contents</a>
+---
 
-1. ✨ [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🔗 [Assets](#links)
-6. 🚀 [More](#more)
+## 📌 About the Project
 
-## 🚨 Tutorial
+Job seekers often submit the same resume to multiple roles without knowing how well it matches a particular job description or how effectively it can be processed by an Applicant Tracking System (ATS).
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
+**HireLens AI** helps solve this problem.
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
+A user can upload a resume in PDF format, enter the target company, job title, and job description, and receive AI-generated feedback designed to highlight strengths and areas for improvement.
 
-<a href="https://www.youtube.com/watch?v=iYOz165wGkQ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
+The application provides:
 
-## <a name="introduction">✨ Introduction</a>
+- Overall Resume Score
+- ATS Compatibility Score
+- Tone & Style Analysis
+- Content Analysis
+- Resume Structure Analysis
+- Skills Analysis
+- ATS-specific suggestions
+- Detailed improvement recommendations
+- Resume history and previous analysis results
 
-Build an AI-powered Resume Analyzer with React, React Router, and Puter.js! Implement seamless auth, upload and store resumes, and match candidates to jobs using smart AI evaluations. Get custom feedback and ATS scores tailored to each listing—all wrapped in a clean, reusable UI.
+---
 
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
+## ⚙️ How It Works
 
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+```text
+Upload Resume (PDF)
+        ↓
+Enter Company & Job Details
+        ↓
+Resume Upload & Storage
+        ↓
+PDF Converted to Preview Image
+        ↓
+AI Analyzes Resume Against Job Description
+        ↓
+Overall Resume Score
+        ↓
+ATS Compatibility Analysis
+        ↓
+Category-wise Feedback
+        ↓
+Actionable Improvement Suggestions
+```
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+The generated analysis is stored so users can revisit previously analyzed resumes from the dashboard.
 
-- **[React](https://react.dev/)** is a popular open‑source JavaScript library for building user interfaces using reusable components and a virtual DOM, enabling efficient, dynamic single-page and native apps.
+---
 
-- **[React Router v7](https://reactrouter.com/)** is the go‑to routing library for React apps, offering nested routes, data loaders/actions, error boundaries, code splitting, and SSR support—all with a smooth upgrade path from v6.
+## ✨ Key Features
 
-- **[Puter.com](https://jsm.dev/resumind-puter)** is an advanced, open-source internet operating system designed to be feature-rich, exceptionally fast, and highly extensible. Puter can be used as: A privacy-first personal cloud to keep all your files, apps, and games in one secure place, accessible from anywhere at any time.
+### 🤖 AI-Powered Resume Analysis
 
-- **[Puter.js](https://jsm.dev/resumind-puterjs)** is a tiny client‑side SDK that adds serverless auth, storage, database, and AI (GPT, Claude, DALL·E, OCR…) straight into your browser app—no backend needed and costs borne by users.
+HireLens AI analyzes resume information and generates structured feedback based on the job description provided by the user.
 
-- **[Tailwind CSS](https://tailwindcss.com/)** is a utility-first CSS framework that allows developers to design custom user interfaces by applying low-level utility classes directly in HTML, streamlining the design process.
+### 📊 Overall Resume Score
 
-- **[TypeScript](https://www.typescriptlang.org/)** is a superset of JavaScript that adds static typing, providing better tooling, code quality, and error detection for developers, making it ideal for building large-scale applications.
+The application generates an overall score based on important resume factors such as:
 
-- **[Vite](https://vite.dev/)** is a fast build tool and dev server using native ES modules for instant startup, hot‑module replacement, and Rollup‑powered production builds—perfect for modern web development.
+- Content
+- Structure
+- Skills
+- Tone & Style
 
-- **[Zustand](https://github.com/pmndrs/zustand)** is a minimal, hook-based state management library for React. It lets you manage global state with zero boilerplate, no context providers, and excellent performance through selective state subscriptions.
+### 🎯 ATS Compatibility Analysis
 
-## <a name="features">🔋 Features</a>
+The ATS section evaluates how well the resume may work with Applicant Tracking Systems and provides suggestions for improving compatibility.
 
-👉 **Easy & convenient auth**: Handle authentication entirely in the browser using Puter.js—no backend or setup required.
+> **Note:** The ATS score is an AI-generated estimate intended to provide guidance. It does not represent the scoring system of every employer or ATS platform.
 
-👉 **Resume upload & storage**: Let users upload and store all their resumes in one place, safely and reliably.
+### 🧠 Detailed Resume Breakdown
 
-👉 **AI resume matching**: Provide a job listing and get an ATS score with custom feedback tailored to each resume.
+Users receive category-specific feedback for:
 
-👉 **Reusable, modern UI**: Built with clean, consistent components for a great-looking and maintainable interface.
+- **Tone & Style**
+- **Content**
+- **Structure**
+- **Skills**
 
-👉 **Code Reusability**: Leverage reusable components and a modular codebase for efficient development.
+Each section includes strengths as well as areas that can be improved.
 
-👉 **Cross-Device Compatibility**: Fully responsive design that works seamlessly across all devices.
+### 📄 PDF Resume Upload
 
-👉 **Modern UI/UX**: Clean, responsive design built with Tailwind CSS and shadcn/ui for a sleek user experience.
+Users can upload resumes directly in PDF format.
 
-And many more, including code architecture and reusability.
+The application processes the PDF and generates a visual preview alongside the AI analysis.
 
-## <a name="quick-start">🤸 Quick Start</a>
+### 🖼️ Resume Preview
 
-Follow these steps to set up the project locally on your machine.
+The analysis page uses a split-screen interface:
 
-**Prerequisites**
+```text
+┌──────────────────────┬───────────────────────────────┐
+│                      │                               │
+│   Resume Preview     │      AI Resume Analysis       │
+│                      │                               │
+│       ~40%           │            ~60%               │
+│                      │                               │
+└──────────────────────┴───────────────────────────────┘
+```
 
-Make sure you have the following installed on your machine:
+Users can also open the original uploaded PDF directly from the analysis page.
 
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
+### 🔐 Authentication
 
-**Cloning the Repository**
+Authentication is handled through Puter.js.
+
+Users can sign in before accessing their resume dashboard and analysis history.
+
+### 💾 Resume Storage
+
+Uploaded resumes and their corresponding AI analysis results are stored using Puter's file storage and key-value storage functionality.
+
+### 📱 Responsive Interface
+
+The interface is designed to adapt across desktop and smaller screen sizes.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+| --- | --- |
+| React | User interface and component-based frontend |
+| TypeScript | Static typing and safer application development |
+| React Router | Routing and navigation |
+| Tailwind CSS | Styling and responsive UI |
+| Puter.js | Authentication, storage, key-value data and AI services |
+| Zustand | Application state management |
+| PDF.js | PDF processing |
+| React Dropzone | Drag-and-drop resume upload |
+| Vite | Development and build tooling |
+
+---
+
+## 🧩 Main Application Flow
+
+### 1. Authentication
+
+Users authenticate before accessing their resume dashboard.
+
+### 2. Dashboard
+
+The dashboard displays resumes that have previously been analyzed.
+
+Users can:
+
+- View previous resume analyses
+- See resume scores
+- Upload another resume
+- Open an existing analysis
+
+### 3. Resume Upload
+
+The user provides:
+
+```text
+Company Name
+Job Title
+Job Description
+Resume (PDF)
+```
+
+The PDF upload currently supports files up to **20 MB**.
+
+### 4. PDF Processing
+
+After upload, the application:
+
+1. Uploads the original PDF.
+2. Converts the PDF into an image for preview.
+3. Uploads the generated preview.
+4. Stores resume metadata.
+
+### 5. AI Analysis
+
+The uploaded resume and job description are sent for AI-powered analysis.
+
+The generated feedback is then stored with the resume record.
+
+### 6. Results
+
+The analysis page displays:
+
+```text
+Overall Resume Performance
+        │
+        ├── Tone & Style
+        ├── Content
+        ├── Structure
+        └── Skills
+
+ATS Compatibility
+        │
+        └── ATS Insights & Suggestions
+
+Detailed Resume Breakdown
+        │
+        └── Category-wise Recommendations
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+ai-resume-analyzer/
+│
+├── app/
+│   ├── components/
+│   │   ├── Accordion.tsx
+│   │   ├── ATS.tsx
+│   │   ├── Details.tsx
+│   │   ├── FileUploader.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── ResumeCard.tsx
+│   │   ├── ScoreBadge.tsx
+│   │   ├── ScoreCircle.tsx
+│   │   ├── ScoreGauge.tsx
+│   │   └── Summary.tsx
+│   │
+│   ├── lib/
+│   │   ├── pdf2img.ts
+│   │   ├── puter.ts
+│   │   └── utils.ts
+│   │
+│   ├── routes/
+│   │   ├── auth.tsx
+│   │   ├── home.tsx
+│   │   ├── resume.tsx
+│   │   └── upload.tsx
+│   │
+│   ├── app.css
+│   ├── root.tsx
+│   └── routes.ts
+│
+├── constants/
+├── public/
+│   ├── icons/
+│   ├── images/
+│   ├── favicon.ico
+│   └── pdf.worker.min.mjs
+│
+├── types/
+├── package.json
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run HireLens AI locally.
+
+### Prerequisites
+
+Make sure the following are installed:
+
+- Git
+- Node.js
+- npm
+
+Check your installation:
 
 ```bash
-git clone https://github.com/adrianhajdin/ai-resume-analyzer.git
+node --version
+npm --version
+git --version
+```
+
+---
+
+## 📥 Clone the Repository
+
+```bash
+git clone https://github.com/rishabhgupta16/ai-resume-analyzer.git
+```
+
+Move into the project directory:
+
+```bash
 cd ai-resume-analyzer
 ```
 
-**Installation**
+> If your GitHub repository name is different, use the folder name created by `git clone`.
 
-Install the project dependencies using npm:
+---
+
+## 📦 Install Dependencies
 
 ```bash
 npm install
 ```
 
-**Running the Project**
+---
+
+## ▶️ Run the Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
+Vite will display the local development URL in the terminal.
 
-## <a name="links">🔗 Assets</a>
+It will usually look similar to:
 
-Assets and snippets used in the project can be found in the **[video kit](https://jsm.dev/resumind-kit)**.
+```text
+http://localhost:5173
+```
 
-<a href="https://jsm.dev/resumind-kit" target="_blank">
-  <img src="public/readme/videokit.webp" alt="Video Kit Banner">
-</a>
+The exact port may be different if that port is already being used.
 
-## <a name="more">🚀 More</a>
+Open the displayed URL in your browser.
 
-**Advance your skills with Next.js Pro Course**
+---
 
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with
-detailed explanations, cool features, and exercises to boost your skills. Give it a go!
+## 🧪 Using HireLens AI
 
-<a href="https://jsm.dev/resumind-courses" target="_blank">
-  <img src="public/readme/jsmpro.webp" alt="Project Banner">
-</a>
+After starting the application:
+
+1. Sign in.
+2. Open the **Analyze Resume** page.
+3. Enter the company name.
+4. Enter the target job title.
+5. Paste the job description.
+6. Upload your resume in PDF format.
+7. Click **Analyze Resume**.
+8. Wait while the resume is processed.
+9. Review your resume score.
+10. Check ATS compatibility.
+11. Explore detailed category-wise feedback.
+12. Use the suggestions to improve your resume.
+
+---
+
+## 📊 Analysis Categories
+
+### Tone & Style
+
+Evaluates the clarity and professional presentation of the resume.
+
+### Content
+
+Reviews the quality and relevance of the information included in the resume.
+
+### Structure
+
+Evaluates organization, sections, readability, and resume layout.
+
+### Skills
+
+Reviews how effectively relevant skills are represented for the target role.
+
+### ATS Compatibility
+
+Provides an AI-generated assessment of potential ATS compatibility and highlights possible improvements.
+
+---
+
+## 🎨 HireLens AI Customization
+
+The project has been customized with a distinct **HireLens AI** identity and interface.
+
+Key UI changes include:
+
+- HireLens AI branding
+- Redesigned dashboard presentation
+- Updated resume upload interface
+- Redesigned analysis dashboard
+- 40/60 resume-preview and analysis layout
+- Updated resume score presentation
+- Redesigned ATS compatibility section
+- Improved detailed-analysis layout
+- Updated authentication interface
+- Responsive UI improvements
+- Consistent blue/teal visual language
+
+---
+
+## 🔒 Privacy & Data Considerations
+
+HireLens AI uses Puter.js services for functionality such as authentication, file storage, key-value storage, and AI interactions.
+
+Because resumes may contain personal information, users should review the applicable service policies before uploading sensitive documents.
+
+The application should be treated as a resume-assistance tool rather than a replacement for professional recruiting or career advice.
+
+---
+
+## ⚠️ Disclaimer
+
+HireLens AI provides AI-generated resume feedback.
+
+Scores, ATS insights, and recommendations are estimates and may not represent how a specific employer, recruiter, or Applicant Tracking System will evaluate a resume.
+
+Users should review AI-generated recommendations before making changes to professional documents.
+
+---
+
+## 🌱 Future Improvements
+
+Potential future enhancements include:
+
+- Resume-to-job keyword matching
+- Missing keyword detection
+- Improved ATS recommendations
+- Resume comparison
+- Resume version tracking
+- Downloadable analysis reports
+- More detailed skill-gap analysis
+- Improved dashboard filtering
+- Dark mode
+- Additional AI-powered career insights
+
+---
+
+## 🙏 Acknowledgements
+
+This project was initially developed as a learning project based on the **AI Resume Analyzer tutorial by JavaScript Mastery**.
+
+The tutorial provided the foundation for concepts including the React application structure, Puter.js integration, resume processing, and AI-powered feedback workflow.
+
+The project was subsequently customized and extended under the **HireLens AI** identity, including changes to branding, interface design, result presentation, ATS visualization, authentication UI, and overall user experience.
+
+Original educational resource:
+
+**JavaScript Mastery — AI Resume Analyzer Tutorial**
+
+This repository is maintained as a learning and portfolio project.
+
+---
+
+## 👨‍💻 Developer
+
+**Rishabh Gupta**
+
+B.Tech — Information Technology  
+Raj Kumar Goel Institute of Technology
+
+Areas of interest:
+
+- Web Development
+- JavaScript
+- React
+- AI-powered Applications
+- Full-Stack Development
+
+---
+
+<div align="center">
+
+### HireLens AI
+
+**Smarter Resume Insights. Better Applications.**
+
+Built as a learning and portfolio project.
+
+</div>
