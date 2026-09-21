@@ -19,11 +19,14 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   const { auth, kv } = usePuterStore();
   const navigate = useNavigate();
+
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [loadingResumes, setLoadingResumes] = useState(false);
 
   useEffect(() => {
-    if (!auth.isAuthenticated) navigate("/auth?next=/");
+    if (!auth.isAuthenticated) {
+      navigate("/auth?next=/");
+    }
   }, [auth.isAuthenticated]);
 
   useEffect(() => {
@@ -64,6 +67,7 @@ export default function Home() {
           )}
         </div>
 
+        {/* Loading State */}
         {loadingResumes && (
           <div className="flex flex-col items-center justify-center">
             <img
@@ -74,14 +78,26 @@ export default function Home() {
           </div>
         )}
 
+        {/* Resume Cards */}
         {!loadingResumes && resumes.length > 0 && (
           <div className="resumes-section">
             {resumes.map((resume) => (
-              <ResumeCard key={resume.id} resume={resume} />
+              <ResumeCard
+                key={resume.id}
+                resume={resume}
+                onDelete={(id) =>
+                  setResumes((currentResumes) =>
+                    currentResumes.filter(
+                      (resume) => resume.id !== id
+                    )
+                  )
+                }
+              />
             ))}
           </div>
         )}
 
+        {/* Empty State */}
         {!loadingResumes && resumes?.length === 0 && (
           <div className="flex flex-col items-center justify-center mt-10 gap-4">
             <Link

@@ -182,60 +182,125 @@ export const resumes: Resume[] = [
 ];
 
 export const AIResponseFormat = `
-      interface Feedback {
-      overallScore: number; //max 100
-      ATS: {
-        score: number; //rate based on ATS suitability
-        tips: {
-          type: "good" | "improve";
-          tip: string; //give 3-4 tips
-        }[];
-      };
-      toneAndStyle: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-      content: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-      structure: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-      skills: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-    }`;
+interface Feedback {
+    overallScore: number;
 
-export const prepareInstructions = ({jobTitle, jobDescription}: { jobTitle: string; jobDescription: string; }) =>
-    `You are an expert in ATS (Applicant Tracking System) and resume analysis.
-      Please analyze and rate this resume and suggest how to improve it.
-      The rating can be low if the resume is bad.
-      Be thorough and detailed. Don't be afraid to point out any mistakes or areas for improvement.
-      If there is a lot to improve, don't hesitate to give low scores. This is to help the user to improve their resume.
-      If available, use the job description for the job user is applying to to give more detailed feedback.
-      If provided, take the job description into consideration.
-      The job title is: ${jobTitle}
-      The job description is: ${jobDescription}
-      Provide the feedback using the following format:
-      ${AIResponseFormat}
-      Return the analysis as an JSON object, without any other text and without the backticks.
-      Do not include any other text or comments.`;
+    jobMatch: {
+        score: number;
+        summary: string;
+        matchedKeywords: string[];
+        missingKeywords: string[];
+    };
+
+    ATS: {
+        score: number;
+        tips: {
+            type: "good" | "improve";
+            tip: string;
+        }[];
+    };
+
+    toneAndStyle: {
+        score: number;
+        tips: {
+            type: "good" | "improve";
+            tip: string;
+            explanation: string;
+        }[];
+    };
+
+    content: {
+        score: number;
+        tips: {
+            type: "good" | "improve";
+            tip: string;
+            explanation: string;
+        }[];
+    };
+
+    structure: {
+        score: number;
+        tips: {
+            type: "good" | "improve";
+            tip: string;
+            explanation: string;
+        }[];
+    };
+
+    skills: {
+        score: number;
+        tips: {
+            type: "good" | "improve";
+            tip: string;
+            explanation: string;
+        }[];
+    };
+}`;
+
+export const prepareInstructions = ({
+    jobTitle,
+    jobDescription,
+}: {
+    jobTitle: string;
+    jobDescription: string;
+}) =>
+    `You are an expert in ATS (Applicant Tracking System), resume analysis, and job-resume matching.
+
+Analyze the uploaded resume carefully and provide practical feedback that helps the candidate improve their resume.
+
+The job title is:
+${jobTitle}
+
+The job description is:
+${jobDescription}
+
+Evaluate the resume using the following rules:
+
+1. Give an overall resume score from 0 to 100.
+
+2. Evaluate ATS compatibility and provide useful ATS suggestions.
+
+3. Evaluate:
+   - Tone and style
+   - Content quality
+   - Resume structure
+   - Skills
+
+4. Compare the resume directly with the provided job description.
+
+5. Calculate a jobMatch score from 0 to 100 based on how closely the resume matches the requirements of the provided job description.
+
+6. Add a short and useful jobMatch summary explaining the candidate's overall match with the role.
+
+7. Identify important skills and job-related keywords from the job description that are already present in the resume.
+Return these inside matchedKeywords.
+
+8. Identify important skills and keywords that are required or clearly relevant in the job description but are missing from the resume.
+Return these inside missingKeywords.
+
+9. Do not invent experience, qualifications, technologies, certifications, projects, or skills that are not present in the resume or job description.
+
+10. Only include genuinely relevant terms in missingKeywords.
+Do not encourage keyword stuffing.
+
+11. Keep matchedKeywords and missingKeywords concise.
+Prefer important technical skills, tools, technologies, qualifications, and role-specific keywords.
+
+12. Be realistic when scoring the resume.
+If there are significant weaknesses or the resume does not match the job description well, it is acceptable to give a low score.
+
+If the job description is empty or does not contain enough information for meaningful job matching:
+
+- Set jobMatch.score to 0.
+- Set jobMatch.matchedKeywords to [].
+- Set jobMatch.missingKeywords to [].
+- Set jobMatch.summary to "Add a job description to get a personalized job match analysis."
+
+Provide the feedback using exactly the following structure:
+
+${AIResponseFormat}
+
+Return ONLY a valid JSON object.
+Do not include markdown.
+Do not include backticks.
+Do not include comments or explanations outside the JSON object.`;

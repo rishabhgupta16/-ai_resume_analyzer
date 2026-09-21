@@ -9,6 +9,14 @@ interface Resume {
 
 interface Feedback {
     overallScore: number;
+
+    jobMatch?: {
+        score: number;
+        summary: string;
+        matchedKeywords: string[];
+        missingKeywords: string[];
+    };
+
     ATS: {
         score: number;
         tips: {
@@ -16,6 +24,7 @@ interface Feedback {
             tip: string;
         }[];
     };
+
     toneAndStyle: {
         score: number;
         tips: {
@@ -24,6 +33,7 @@ interface Feedback {
             explanation: string;
         }[];
     };
+
     content: {
         score: number;
         tips: {
@@ -32,6 +42,7 @@ interface Feedback {
             explanation: string;
         }[];
     };
+
     structure: {
         score: number;
         tips: {
@@ -40,6 +51,7 @@ interface Feedback {
             explanation: string;
         }[];
     };
+
     skills: {
         score: number;
         tips: {

@@ -4,13 +4,14 @@ import { usePuterStore } from "~/lib/puter";
 import Summary from "~/components/Summary";
 import ATS from "~/components/ATS";
 import Details from "~/components/Details";
+import JobMatch from "~/components/JobMatch";
 
 export const meta = () => [
     { title: "HireLens AI | Resume Analysis" },
     {
         name: "description",
         content:
-            "AI-powered resume analysis, ATS score, and improvement suggestions.",
+            "AI-powered resume analysis, ATS score, job match insights, and improvement suggestions.",
     },
 ];
 
@@ -28,7 +29,7 @@ const Resume = () => {
         if (!isLoading && !auth.isAuthenticated) {
             navigate(`/auth?next=/resume/${id}`);
         }
-    }, [isLoading]);
+    }, [isLoading, auth.isAuthenticated, id, navigate]);
 
     useEffect(() => {
         const loadResume = async () => {
@@ -38,7 +39,6 @@ const Resume = () => {
 
             const data = JSON.parse(resume);
 
-            // Load original resume PDF
             const resumeBlob = await fs.read(data.resumePath);
 
             if (!resumeBlob) return;
@@ -47,25 +47,19 @@ const Resume = () => {
                 type: "application/pdf",
             });
 
-            const resumeUrl = URL.createObjectURL(pdfBlob);
-            setResumeUrl(resumeUrl);
+            const newResumeUrl = URL.createObjectURL(pdfBlob);
 
-            // Load resume preview image
+            setResumeUrl(newResumeUrl);
+
             const imageBlob = await fs.read(data.imagePath);
 
             if (!imageBlob) return;
 
-            const imageUrl = URL.createObjectURL(imageBlob);
-            setImageUrl(imageUrl);
+            const newImageUrl = URL.createObjectURL(imageBlob);
 
-            // Load AI feedback
+            setImageUrl(newImageUrl);
+
             setFeedback(data.feedback);
-
-            console.log({
-                resumeUrl,
-                imageUrl,
-                feedback: data.feedback,
-            });
         };
 
         loadResume();
@@ -73,8 +67,6 @@ const Resume = () => {
 
     return (
         <main className="!pt-0 bg-[#f8fafc] min-h-screen">
-
-            {/* Top Navigation */}
             <nav className="resume-nav bg-white">
                 <Link to="/" className="back-button">
                     <img
@@ -95,10 +87,8 @@ const Resume = () => {
                 </div>
             </nav>
 
-            {/* Main Result Layout */}
             <div className="flex flex-row w-full max-lg:flex-col-reverse">
-
-                {/* Resume Preview - 40% */}
+                {/* Resume Preview */}
                 <section
                     className="
                         flex flex-col
@@ -119,8 +109,6 @@ const Resume = () => {
                 >
                     {imageUrl && resumeUrl ? (
                         <div className="flex flex-col items-center gap-4 w-full">
-
-                            {/* Preview Header */}
                             <div className="flex items-center justify-between w-full max-w-[650px]">
                                 <div>
                                     <p className="text-sm font-semibold text-slate-700">
@@ -136,13 +124,17 @@ const Resume = () => {
                                     href={resumeUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-sm font-semibold text-blue-600 hover:text-blue-700"
+                                    className="
+                                        text-sm
+                                        font-semibold
+                                        text-blue-600
+                                        hover:text-blue-700
+                                    "
                                 >
                                     Open PDF ↗
                                 </a>
                             </div>
 
-                            {/* Resume Preview Card */}
                             <div
                                 className="
                                     animate-in
@@ -166,7 +158,12 @@ const Resume = () => {
                                 >
                                     <img
                                         src={imageUrl}
-                                        className="w-full h-full object-contain rounded-2xl"
+                                        className="
+                                            w-full
+                                            h-full
+                                            object-contain
+                                            rounded-2xl
+                                        "
                                         title="Resume Preview"
                                         alt="Resume preview"
                                     />
@@ -188,7 +185,7 @@ const Resume = () => {
                     )}
                 </section>
 
-                {/* AI Analysis - 60% */}
+                {/* AI Analysis */}
                 <section
                     className="
                         flex
@@ -202,27 +199,85 @@ const Resume = () => {
                         bg-white
                     "
                 >
-                    {/* Analysis Heading */}
-                    <div className="flex flex-col gap-2">
-                        <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide">
+                    <div className="flex flex-col gap-4">
+                        <p
+                            className="
+                                text-blue-600
+                                font-semibold
+                                text-sm
+                                uppercase
+                                tracking-wide
+                            "
+                        >
                             AI-Powered Analysis
                         </p>
 
-                        <h2 className="text-4xl !text-slate-900 font-bold">
-                            Your Resume Review
-                        </h2>
+                        <div
+                            className="
+                                flex
+                                items-center
+                                justify-between
+                                gap-5
+                                max-md:flex-col
+                                max-md:items-start
+                            "
+                        >
+                            <div className="flex flex-col gap-2">
+                                <h2 className="text-4xl !text-slate-900 font-bold">
+                                    Your Resume Review
+                                </h2>
 
-                        <p className="text-slate-500">
-                            See how your resume performs and discover improvements
-                            that can strengthen your application.
-                        </p>
+                                <p className="text-slate-500 max-w-[650px]">
+                                    See how your resume performs and discover
+                                    improvements that can strengthen your
+                                    application.
+                                </p>
+                            </div>
+
+                            <Link
+                                to="/upload"
+                                className="
+                                    flex
+                                    items-center
+                                    justify-center
+                                    whitespace-nowrap
+                                    px-5
+                                    py-3
+                                    rounded-xl
+                                    bg-blue-600
+                                    hover:bg-blue-700
+                                    text-white
+                                    font-semibold
+                                    shadow-sm
+                                    hover:shadow-md
+                                    transition-all
+                                    duration-200
+                                "
+                            >
+                                + Analyze Another Resume
+                            </Link>
+                        </div>
                     </div>
 
-                    {/* Feedback */}
                     {feedback ? (
-                        <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
-
+                        <div
+                            className="
+                                flex
+                                flex-col
+                                gap-8
+                                animate-in
+                                fade-in
+                                duration-1000
+                            "
+                        >
                             <Summary feedback={feedback} />
+
+                            {/* Job Match + Missing Keywords */}
+                            {feedback.jobMatch && (
+                                <JobMatch
+                                    jobMatch={feedback.jobMatch}
+                                />
+                            )}
 
                             <ATS
                                 score={feedback.ATS.score || 0}
@@ -230,11 +285,18 @@ const Resume = () => {
                             />
 
                             <Details feedback={feedback} />
-
                         </div>
                     ) : (
-                        <div className="flex flex-col items-center justify-center py-16 gap-4">
-
+                        <div
+                            className="
+                                flex
+                                flex-col
+                                items-center
+                                justify-center
+                                py-16
+                                gap-4
+                            "
+                        >
                             <img
                                 src="/images/resume-scan-2.gif"
                                 className="w-[280px]"
@@ -244,7 +306,6 @@ const Resume = () => {
                             <p className="text-slate-500 font-medium">
                                 Preparing your AI feedback...
                             </p>
-
                         </div>
                     )}
                 </section>
