@@ -1,12 +1,16 @@
-# HireLens AI — AI-Powered Resume Analyzer
+# 🚀 HireLens AI — AI-Powered Resume Analyzer
 
 <div align="center">
 
 ### Analyze. Improve. Apply with Confidence.
 
-**HireLens AI** is an AI-powered resume analysis web application that evaluates resumes against job requirements and provides structured feedback, ATS compatibility insights, and actionable improvement suggestions.
+**HireLens AI** is an AI-powered resume analysis web application that evaluates resumes against job descriptions, estimates ATS compatibility, calculates job-match scores, identifies matched and missing keywords, and provides actionable improvement suggestions.
 
-Built with **React, TypeScript, Tailwind CSS, React Router, Puter.js, and AI-powered analysis**.
+Built with **React, TypeScript, Tailwind CSS, React Router, Puter.js, PDF.js, Zustand, and Vite**.
+
+### 🌐 Live Application
+
+[🚀 View Live Demo](https://hirelens-ai-lyart.vercel.app/)
 
 </div>
 
@@ -14,23 +18,119 @@ Built with **React, TypeScript, Tailwind CSS, React Router, Puter.js, and AI-pow
 
 ## 📌 About the Project
 
-Job seekers often submit the same resume to multiple roles without knowing how well it matches a particular job description or how effectively it can be processed by an Applicant Tracking System (ATS).
+Job seekers often use the same resume for multiple roles without knowing how closely it matches a specific job description or how effectively it may perform with an Applicant Tracking System (ATS).
 
-**HireLens AI** helps solve this problem.
+**HireLens AI** helps users evaluate their resume for a specific opportunity.
 
-A user can upload a resume in PDF format, enter the target company, job title, and job description, and receive AI-generated feedback designed to highlight strengths and areas for improvement.
+Users can provide:
 
-The application provides:
+- Company Name
+- Job Title
+- Job Description
+- Resume in PDF format
 
-- Overall Resume Score
-- ATS Compatibility Score
-- Tone & Style Analysis
-- Content Analysis
-- Resume Structure Analysis
-- Skills Analysis
-- ATS-specific suggestions
-- Detailed improvement recommendations
-- Resume history and previous analysis results
+HireLens AI then processes the resume and generates structured AI-powered feedback to help users understand their resume's strengths, weaknesses, ATS compatibility, and relevance to the target role.
+
+---
+
+## ✨ Key Features
+
+### 🤖 AI-Powered Resume Analysis
+
+Analyzes an uploaded resume and generates structured feedback based on the job description provided by the user.
+
+### 📊 Overall Resume Score
+
+Generates an overall resume score based on factors including:
+
+- Content
+- Structure
+- Skills
+- Tone & Style
+
+### 🎯 ATS Compatibility Analysis
+
+Provides an AI-generated ATS compatibility score along with suggestions for improving resume readability and compatibility.
+
+> **Note:** ATS scores are AI-generated estimates and do not represent the scoring system of every employer or ATS platform.
+
+### 💼 Job Match Score
+
+Compares the resume with the provided job description and generates a **Job Match percentage**.
+
+This helps users understand how closely their current resume aligns with the target role.
+
+### ✅ Matched Keywords
+
+Identifies relevant skills and keywords from the job description that are already represented in the resume.
+
+### ⚠️ Missing Keywords
+
+Highlights important job-related keywords or skills that may be missing from the resume.
+
+Users should only add suggested skills when they genuinely reflect their experience.
+
+### 🧠 AI Match Summary
+
+Provides a concise AI-generated explanation of the resume's overall compatibility with the target job.
+
+### 📋 Detailed Resume Breakdown
+
+Provides category-specific analysis for:
+
+- Tone & Style
+- Content
+- Structure
+- Skills
+
+Each category includes strengths and practical improvement suggestions.
+
+### 📄 PDF Resume Upload
+
+Supports direct PDF resume uploads of up to **20 MB**.
+
+### 🖼️ Resume Preview
+
+The original resume is converted into a visual preview and displayed alongside the AI analysis.
+
+Users can also open the original PDF directly from the results page.
+
+### 🗂️ Resume Dashboard
+
+Previously analyzed resumes are displayed on the dashboard.
+
+Users can:
+
+- View previous analyses
+- See resume scores
+- Open detailed results
+- Analyze another resume
+- Delete previous resume analyses
+
+### 🔄 Analyze Another Resume
+
+Users can quickly start another resume analysis directly from the result page.
+
+### 🗑️ Delete Resume
+
+Users can remove previously analyzed resumes from their dashboard.
+
+### 🔐 Authentication
+
+Authentication is handled using **Puter.js**.
+
+### 💾 Resume & Analysis Storage
+
+Puter services are used for:
+
+- Authentication
+- File storage
+- Key-value storage
+- AI-powered analysis
+
+### 📱 Responsive Interface
+
+The interface is designed to work across desktop and smaller screen sizes.
 
 ---
 
@@ -41,92 +141,26 @@ Upload Resume (PDF)
         ↓
 Enter Company & Job Details
         ↓
-Resume Upload & Storage
+Upload & Store Resume
         ↓
-PDF Converted to Preview Image
+Convert PDF to Preview Image
         ↓
-AI Analyzes Resume Against Job Description
+AI Analyzes Resume + Job Description
         ↓
 Overall Resume Score
         ↓
+Job Match Score
+        ↓
+Matched & Missing Keywords
+        ↓
 ATS Compatibility Analysis
         ↓
-Category-wise Feedback
+Category-Wise Resume Feedback
         ↓
 Actionable Improvement Suggestions
 ```
 
-The generated analysis is stored so users can revisit previously analyzed resumes from the dashboard.
-
----
-
-## ✨ Key Features
-
-### 🤖 AI-Powered Resume Analysis
-
-HireLens AI analyzes resume information and generates structured feedback based on the job description provided by the user.
-
-### 📊 Overall Resume Score
-
-The application generates an overall score based on important resume factors such as:
-
-- Content
-- Structure
-- Skills
-- Tone & Style
-
-### 🎯 ATS Compatibility Analysis
-
-The ATS section evaluates how well the resume may work with Applicant Tracking Systems and provides suggestions for improving compatibility.
-
-> **Note:** The ATS score is an AI-generated estimate intended to provide guidance. It does not represent the scoring system of every employer or ATS platform.
-
-### 🧠 Detailed Resume Breakdown
-
-Users receive category-specific feedback for:
-
-- **Tone & Style**
-- **Content**
-- **Structure**
-- **Skills**
-
-Each section includes strengths as well as areas that can be improved.
-
-### 📄 PDF Resume Upload
-
-Users can upload resumes directly in PDF format.
-
-The application processes the PDF and generates a visual preview alongside the AI analysis.
-
-### 🖼️ Resume Preview
-
-The analysis page uses a split-screen interface:
-
-```text
-┌──────────────────────┬───────────────────────────────┐
-│                      │                               │
-│   Resume Preview     │      AI Resume Analysis       │
-│                      │                               │
-│       ~40%           │            ~60%               │
-│                      │                               │
-└──────────────────────┴───────────────────────────────┘
-```
-
-Users can also open the original uploaded PDF directly from the analysis page.
-
-### 🔐 Authentication
-
-Authentication is handled through Puter.js.
-
-Users can sign in before accessing their resume dashboard and analysis history.
-
-### 💾 Resume Storage
-
-Uploaded resumes and their corresponding AI analysis results are stored using Puter's file storage and key-value storage functionality.
-
-### 📱 Responsive Interface
-
-The interface is designed to adapt across desktop and smaller screen sizes.
+The generated analysis is stored so users can revisit previous results from their dashboard.
 
 ---
 
@@ -134,34 +168,30 @@ The interface is designed to adapt across desktop and smaller screen sizes.
 
 | Technology | Purpose |
 | --- | --- |
-| React | User interface and component-based frontend |
-| TypeScript | Static typing and safer application development |
-| React Router | Routing and navigation |
+| React | Component-based user interface |
+| TypeScript | Static typing and safer development |
+| React Router | Routing and application framework |
 | Tailwind CSS | Styling and responsive UI |
-| Puter.js | Authentication, storage, key-value data and AI services |
+| Puter.js | Authentication, storage, KV data and AI services |
 | Zustand | Application state management |
-| PDF.js | PDF processing |
-| React Dropzone | Drag-and-drop resume upload |
-| Vite | Development and build tooling |
+| PDF.js | PDF processing and preview generation |
+| React Dropzone | Drag-and-drop resume uploads |
+| Vite | Development and production build tooling |
+| Vercel | Production deployment |
 
 ---
 
-## 🧩 Main Application Flow
+## 🧩 Application Flow
 
 ### 1. Authentication
 
-Users authenticate before accessing their resume dashboard.
+Users sign in before accessing their resume dashboard.
 
 ### 2. Dashboard
 
-The dashboard displays resumes that have previously been analyzed.
+The dashboard displays previously analyzed resumes.
 
-Users can:
-
-- View previous resume analyses
-- See resume scores
-- Upload another resume
-- Open an existing analysis
+Users can view an existing analysis, delete a resume, or start a new analysis.
 
 ### 3. Resume Upload
 
@@ -174,43 +204,46 @@ Job Description
 Resume (PDF)
 ```
 
-The PDF upload currently supports files up to **20 MB**.
+PDF files up to **20 MB** are supported.
 
 ### 4. PDF Processing
 
 After upload, the application:
 
 1. Uploads the original PDF.
-2. Converts the PDF into an image for preview.
-3. Uploads the generated preview.
+2. Converts the PDF into an image.
+3. Stores the generated preview.
 4. Stores resume metadata.
 
 ### 5. AI Analysis
 
-The uploaded resume and job description are sent for AI-powered analysis.
+The resume is analyzed against the supplied job description.
 
-The generated feedback is then stored with the resume record.
-
-### 6. Results
-
-The analysis page displays:
+The application generates:
 
 ```text
-Overall Resume Performance
+Overall Resume Score
         │
         ├── Tone & Style
         ├── Content
         ├── Structure
         └── Skills
 
+Job Compatibility
+        │
+        ├── Job Match Score
+        ├── AI Match Summary
+        ├── Matched Keywords
+        └── Missing Keywords
+
 ATS Compatibility
         │
         └── ATS Insights & Suggestions
-
-Detailed Resume Breakdown
-        │
-        └── Category-wise Recommendations
 ```
+
+### 6. Results
+
+The analysis page combines the resume preview with detailed AI feedback so users can review their resume and recommendations together.
 
 ---
 
@@ -225,6 +258,7 @@ ai-resume-analyzer/
 │   │   ├── ATS.tsx
 │   │   ├── Details.tsx
 │   │   ├── FileUploader.tsx
+│   │   ├── JobMatch.tsx
 │   │   ├── Navbar.tsx
 │   │   ├── ResumeCard.tsx
 │   │   ├── ScoreBadge.tsx
@@ -256,6 +290,7 @@ ai-resume-analyzer/
 │
 ├── types/
 ├── package.json
+├── react-router.config.ts
 └── README.md
 ```
 
@@ -263,11 +298,9 @@ ai-resume-analyzer/
 
 ## 🚀 Getting Started
 
-Follow these steps to run HireLens AI locally.
-
 ### Prerequisites
 
-Make sure the following are installed:
+Make sure you have installed:
 
 - Git
 - Node.js
@@ -286,16 +319,14 @@ git --version
 ## 📥 Clone the Repository
 
 ```bash
-git clone https://github.com/rishabhgupta16/ai-resume-analyzer.git
+git clone https://github.com/rishabhgupta16/-ai_resume_analyzer.git
 ```
 
-Move into the project directory:
+Move into the cloned project directory:
 
 ```bash
-cd ai-resume-analyzer
+cd -ai_resume_analyzer
 ```
-
-> If your GitHub repository name is different, use the folder name created by `git clone`.
 
 ---
 
@@ -313,7 +344,7 @@ npm install
 npm run dev
 ```
 
-Vite will display the local development URL in the terminal.
+Open the local URL displayed in your terminal.
 
 It will usually look similar to:
 
@@ -321,28 +352,46 @@ It will usually look similar to:
 http://localhost:5173
 ```
 
-The exact port may be different if that port is already being used.
+The port may be different if `5173` is already being used.
 
-Open the displayed URL in your browser.
+---
+
+## 🏗️ Production Build
+
+Create a production build using:
+
+```bash
+npm run build
+```
+
+---
+
+## 🌐 Deployment
+
+HireLens AI is deployed using **Vercel**.
+
+### Live Demo
+
+**https://hirelens-ai-lyart.vercel.app/**
 
 ---
 
 ## 🧪 Using HireLens AI
 
-After starting the application:
-
-1. Sign in.
-2. Open the **Analyze Resume** page.
+1. Sign in to HireLens AI.
+2. Select **Analyze Resume**.
 3. Enter the company name.
 4. Enter the target job title.
 5. Paste the job description.
 6. Upload your resume in PDF format.
 7. Click **Analyze Resume**.
-8. Wait while the resume is processed.
-9. Review your resume score.
-10. Check ATS compatibility.
-11. Explore detailed category-wise feedback.
-12. Use the suggestions to improve your resume.
+8. Wait for the AI analysis.
+9. Review your overall resume score.
+10. Check your Job Match percentage.
+11. Review matched and missing keywords.
+12. Check ATS compatibility.
+13. Explore category-wise feedback.
+14. Use relevant recommendations to improve your resume.
 
 ---
 
@@ -350,19 +399,23 @@ After starting the application:
 
 ### Tone & Style
 
-Evaluates the clarity and professional presentation of the resume.
+Evaluates clarity, professionalism, and presentation.
 
 ### Content
 
-Reviews the quality and relevance of the information included in the resume.
+Reviews the quality and relevance of the resume's information.
 
 ### Structure
 
-Evaluates organization, sections, readability, and resume layout.
+Evaluates organization, sections, readability, and overall layout.
 
 ### Skills
 
 Reviews how effectively relevant skills are represented for the target role.
+
+### Job Match
+
+Estimates how closely the resume aligns with the supplied job description.
 
 ### ATS Compatibility
 
@@ -372,21 +425,28 @@ Provides an AI-generated assessment of potential ATS compatibility and highlight
 
 ## 🎨 HireLens AI Customization
 
-The project has been customized with a distinct **HireLens AI** identity and interface.
+The project has been customized and extended with a distinct **HireLens AI** identity and user experience.
 
-Key UI changes include:
+Major additions and improvements include:
 
 - HireLens AI branding
-- Redesigned dashboard presentation
-- Updated resume upload interface
-- Redesigned analysis dashboard
-- 40/60 resume-preview and analysis layout
-- Updated resume score presentation
-- Redesigned ATS compatibility section
-- Improved detailed-analysis layout
+- Redesigned dashboard
 - Updated authentication interface
+- Redesigned resume upload experience
+- Improved resume-card layout
+- Resume deletion functionality
+- Job Match scoring
+- AI Match Summary
+- Matched keyword detection
+- Missing keyword detection
+- Analyze Another Resume functionality
+- Redesigned analysis interface
+- Resume preview alongside analysis
+- Updated ATS visualization
+- Improved detailed feedback presentation
 - Responsive UI improvements
 - Consistent blue/teal visual language
+- Production deployment on Vercel
 
 ---
 
@@ -394,17 +454,19 @@ Key UI changes include:
 
 HireLens AI uses Puter.js services for functionality such as authentication, file storage, key-value storage, and AI interactions.
 
-Because resumes may contain personal information, users should review the applicable service policies before uploading sensitive documents.
+Because resumes can contain personal information, users should review applicable service policies before uploading sensitive documents.
 
-The application should be treated as a resume-assistance tool rather than a replacement for professional recruiting or career advice.
+HireLens AI should be treated as a resume-assistance tool rather than a replacement for professional recruiting or career advice.
 
 ---
 
 ## ⚠️ Disclaimer
 
-HireLens AI provides AI-generated resume feedback.
+HireLens AI provides **AI-generated resume feedback**.
 
-Scores, ATS insights, and recommendations are estimates and may not represent how a specific employer, recruiter, or Applicant Tracking System will evaluate a resume.
+Resume scores, job-match percentages, ATS insights, keyword suggestions, and other recommendations are estimates.
+
+They may not represent how a specific recruiter, employer, hiring process, or Applicant Tracking System will evaluate a resume.
 
 Users should review AI-generated recommendations before making changes to professional documents.
 
@@ -414,15 +476,13 @@ Users should review AI-generated recommendations before making changes to profes
 
 Potential future enhancements include:
 
-- Resume-to-job keyword matching
-- Missing keyword detection
-- Improved ATS recommendations
 - Resume comparison
 - Resume version tracking
 - Downloadable analysis reports
-- More detailed skill-gap analysis
-- Improved dashboard filtering
+- Advanced skill-gap analysis
+- Dashboard search and filtering
 - Dark mode
+- More detailed role-specific recommendations
 - Additional AI-powered career insights
 
 ---
@@ -433,11 +493,10 @@ This project was initially developed as a learning project based on the **AI Res
 
 The tutorial provided the foundation for concepts including the React application structure, Puter.js integration, resume processing, and AI-powered feedback workflow.
 
-The project was subsequently customized and extended under the **HireLens AI** identity, including changes to branding, interface design, result presentation, ATS visualization, authentication UI, and overall user experience.
+The project was subsequently customized and extended under the **HireLens AI** identity with additional functionality and UI improvements, including Job Match analysis, matched and missing keyword insights, resume deletion, redesigned interfaces, improved result presentation, and production deployment.
 
-Original educational resource:
-
-**JavaScript Mastery — AI Resume Analyzer Tutorial**
+**Original educational resource:**  
+JavaScript Mastery — AI Resume Analyzer Tutorial
 
 This repository is maintained as a learning and portfolio project.
 
@@ -450,21 +509,23 @@ This repository is maintained as a learning and portfolio project.
 B.Tech — Information Technology  
 Raj Kumar Goel Institute of Technology
 
-Areas of interest:
+### Areas of Interest
 
 - Web Development
 - JavaScript
 - React
-- AI-powered Applications
+- AI-Powered Applications
 - Full-Stack Development
 
 ---
 
 <div align="center">
 
-### HireLens AI
+## 🚀 HireLens AI
 
-**Smarter Resume Insights. Better Applications.**
+### Smarter Resume Insights. Better Applications.
+
+[**🌐 Try HireLens AI Live**](https://hirelens-ai-lyart.vercel.app/)
 
 Built as a learning and portfolio project.
 
